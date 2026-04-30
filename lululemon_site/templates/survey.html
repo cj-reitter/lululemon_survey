@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+            Lululemon Survey
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/survey.js' %}" defer></script>
+
+</head>
+<body>
+    <main>
+        {% block content %}
+            <div class='container'>
+                <div class='title survey_title'>
+                    <h1>Lululemon Survey</h1>
+                </div>
+                <div class='intro survey_intro'>
+                    <p>Please answer the following questions about your experience and opinions on Lululemon.</p>
+                </div>
+                <form id='survey_form' method='POST' class='form survey_form'>
+                    {% csrf_token %}
+                    <section class='section survey_section'>
+                        <h2>Awareness and Experience</h2>
+                        <div class='question rating_question'>
+                            <p>How familiar are you with Lululemon?</p>
+                            <div class='options rating_q_options'>
+                                <label><input type='radio' name='sec1_q1' value='very-fam'> Very Familiar</label>
+                                <label><input type='radio' name='sec1_q1' value='some-fam'> Somewhat Familiar</label>
+                                <label><input type='radio' name='sec1_q1' value='heard-of'> Heard of</label>
+                                <label><input type='radio' name='sec1_q1' value='not-fam'> Not Familiar</label>
+                            </div>
+                        </div>
+                        <div class='question rating_question'>
+                            <p>Have you ever purchased products from Lululemon?</p>
+                            <div class='options rating_q_options'>
+                                <label><input type='radio' name='sec1_q2' value='yes'> Yes</label>
+                                <label><input type='radio' name='sec1_q2' value='no'> No</label>
+                            </div>
+                        </div>
+                        <div class='purchase_questions'>
+                            <div class='question rating_question'>
+                                <p>How often do you purchase from Lululemon?</p>
+                                <div class='options rating_q_options'>
+                                    <label><input type='radio' name='sec1_q3' value='freq'> 5+ times a year</label>
+                                    <label><input type='radio' name='sec1_q3' value='occas'> 2-4 times a year</label>
+                                    <label><input type='radio' name='sec1_q3' value='rarely'> 0-1 times a year</label>
+                                </div>
+                            </div>
+                            <div class='question checkbox_question'>
+                                <p>What types of products have you purchased? (Select all that apply)</p>
+                                <div class='options checkbox_q_options'>
+                                    <label><input type='checkbox' name='sec1_q4' value='bottom'> Leggings / athletic bottoms</label>
+                                    <label><input type='checkbox' name='sec1_q4' value='top'> Tops / sportswear</label>
+                                    <label><input type='checkbox' name='sec1_q4' value='access'> Accessories (bags, yoga mats, etc.)</label>
+                                    <label><input type='checkbox' name='sec1_q4' value='other'> Other</label>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class='section survey_section'>
+                        <h2>Perception and Satisfaction</h2>
+                        <div class='question rating_question'>
+                            <p>How would you rate your overall perception of Lululemon?</p>
+                            <div class='options rating_q_options'>
+                                <label><input type='radio' name='sec2_q1' value='v-pos'> Very positive</label>
+                                <label><input type='radio' name='sec2_q1' value='s-pos'> Somewhat positive</label>
+                                <label><input type='radio' name='sec2_q1' value='neu'> Neutral</label>
+                                <label><input type='radio' name='sec2_q1' value='s-neg'> Somewhat negative</label>
+                                <label><input type='radio' name='sec2_q1' value='v-neg'> Very negative</label>
+                            </div>
+                        </div>
+                        <div class='question rating_question'>
+                            <p>How likely are you to recommend Lululemon to others?</p>
+                            <div class='options rating_q_options'>
+                                <label><input type='radio' name='sec2_q2' value='v-like'> Very likely</label>
+                                <label><input type='radio' name='sec2_q2' value='s-like'> Somewhat likely</label>
+                                <label><input type='radio' name='sec2_q2' value='neu'> Neutral</label>
+                                <label><input type='radio' name='sec2_q2' value='s-like'> Somewhat unlikely</label>
+                                <label><input type='radio' name='sec2_q2' value='v-like'> Very unlikely</label>
+                            </div>
+                        </div>
+                        <div class='question openended_question'>
+                            <label for='sec2_q3'>What words come to mind when you think of Lululemon?</label>
+                            <textarea id='sec2_q3' name='sec2_q3' rows='4' placeholder='Enter text here...'></textarea>
+                        </div>
+                        <h2>If you’ve purchased from Lululemon, how satisfied are you with:</h2>
+                        <div class='question rating_question'>
+                            <p>Product quality</p>
+                            <div class='options rating_q_options'>
+                                <label><input type='radio' name='sec2_q4' value='v-sat'> Very satisfied</label>
+                                <label><input type='radio' name='sec2_q4' value='s-sat'> Somewhat satisfied</label>
+                                <label><input type='radio' name='sec2_q4' value='neu'> Neutral</label>
+                                <label><input type='radio' name='sec2_q4' value='s-dis'> Somewhat dissatisfied</label>
+                                <label><input type='radio' name='sec2_q4' value='v-dis'> Very dissatisfied</label>
+                            </div>
+                        </div>
+                        <div class='question rating_question'>
+                            <p>Price/value</p>
+                            <div class='options rating_q_options'>
+                                <label><input type='radio' name='sec2_q5' value='v-sat'> Very satisfied</label>
+                                <label><input type='radio' name='sec2_q5' value='s-sat'> Somewhat satisfied</label>
+                                <label><input type='radio' name='sec2_q5' value='neu'> Neutral</label>
+                                <label><input type='radio' name='sec2_q5' value='s-dis'> Somewhat dissatisfied</label>
+                                <label><input type='radio' name='sec2_q5' value='v-dis'> Very dissatisfied</label>
+                            </div>
+                        </div>
+                        <div class='question rating_question'>
+                            <p>Comfort/fit</p>
+                            <div class='options rating_q_options'>
+                                <label><input type='radio' name='sec2_q6' value='v-sat'> Very satisfied</label>
+                                <label><input type='radio' name='sec2_q6' value='s-sat'> Somewhat satisfied</label>
+                                <label><input type='radio' name='sec2_q6' value='neu'> Neutral</label>
+                                <label><input type='radio' name='sec2_q6' value='s-dis'> Somewhat dissatisfied</label>
+                                <label><input type='radio' name='sec2_q6' value='v-dis'> Very dissatisfied</label>
+                            </div>
+                        </div>
+                        <div class='question rating_question'>
+                            <p>Brand image</p>
+                            <div class='options rating_q_options'>
+                                <label><input type='radio' name='sec2_q7' value='v-sat'> Very satisfied</label>
+                                <label><input type='radio' name='sec2_q7' value='s-sat'> Somewhat satisfied</label>
+                                <label><input type='radio' name='sec2_q7' value='neu'> Neutral</label>
+                                <label><input type='radio' name='sec2_q7' value='s-dis'> Somewhat dissatisfied</label>
+                                <label><input type='radio' name='sec2_q7' value='v-dis'> Very dissatisfied</label>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class='section survey_section'>
+                        <h2>Pricing and Competition</h2>
+                        <div class='question rating_question'>
+                            <p>How do you perceive Lululemon’s pricing?</p>
+                            <div class='options rating_q_options'>
+                                <label><input type='radio' name='sec3_q1' value='very-exp'> Very Expensive</label>
+                                <label><input type='radio' name='sec3_q1' value='some-exp'> Slightly Expensive</label>
+                                <label><input type='radio' name='sec3_q1' value='fair'> Fairly Priced</label>
+                                <label><input type='radio' name='sec3_q1' value='some-cheap'> Slightly Cheap</label>
+                                <label><input type='radio' name='sec3_q1' value='very-cheap'> Very Cheap</label>
+                            </div>
+                        </div>
+                        <div class='question openended_question'>
+                            <label for='sec3_q2'>What brands do you consider alternatives to Lululemon? (i.e. alternative atheleisure brands)</label>
+                            <textarea id='sec3_q2' name='sec3_q2' rows='4' placeholder='Enter text here...'></textarea>
+                        </div>
+                        <div class='question rating_question'>
+                            <p>What attribute do you look for the most in alternatives to Lululemon?</p>
+                            <div class='options rating_q_options'>
+                                <label><input type='radio' name='sec3_q3' value='price'> Price</label>
+                                <label><input type='radio' name='sec3_q3' value='style'> Style</label>
+                                <label><input type='radio' name='sec3_q3' value='quality'> Quality</label>
+                                <label><input type='radio' name='sec3_q3' value='avail'> Availability</label>
+                                <label><input type='radio' name='sec3_q3' value='brand'> Brand Image</label>
+                                <label><input type='radio' name='sec3_q3' value='other'> Other</label>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class='section survey_section'>
+                        <h2>Improvement and Turnaround Insight</h2>
+                        <div class='question openended_question'>
+                            <label for='sec4_q1'>What do you think Lululemon does well?</label>
+                            <textarea id='sec4_q1' name='sec4_q1' rows='4' placeholder='Enter text here...'></textarea>
+                        </div>
+                        <div class='question openended_question'>
+                            <label for='sec4_q2'>What do you think Lululemon could improve?</label>
+                            <textarea id='sec4_q2' name='sec4_q2' rows='4' placeholder='Enter text here...'></textarea>
+                        </div>
+                    </section>
+
+                    <section class='section survey_section'>
+                        <h2>Demographics (Optional)</h2>
+                        <div class='question demographic_question'>
+                            <label for='age'>Age (Optional):</label>
+                            <input type='number' id='age' name='age' placeholder='Enter your age'>
+                        </div>
+                        <div class='question demographic_question'>
+                            <label for='gender'>Gender (Optional):</label>
+                            <select id='gender' name='gender'>
+                                <option value=''>-- Select --</option>
+                                <option value='male'> Male</option>
+                                <option value='female'> Female</option>
+                                <option value='non-binary'> Non-binary</option>
+                                <option value='other'> Other</option>
+                                <option value='prefer-not-to-say'> Prefer not to say</option>
+                            </select>
+                        </div>
+                    </section>
+                    <div class='form_actions'>
+                        <button type='submit' class='submit_button'>Submit Survey</button>
+                    </div>
+                </form>
+            </div>
+        {% endblock %}
+    </main>
+</body>
+</html>
