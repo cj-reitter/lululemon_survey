@@ -1,144 +1,103 @@
-:root {
-	--page-bg: rgb(252, 238, 241);
-	--card-bg: rgb(255, 255, 255);
-	--section-bg: rgb(248, 228, 232);
-	--primary: rgb(200, 16, 46);
-	--primary-dark: rgb(140, 10, 31);
-	--primary-soft: rgb(229, 183, 192);
-	--primary-faint: rgb(252, 236, 239);
-	--text-main: rgb(28, 18, 20);
-	--text-muted: rgb(90, 68, 72);
-	--border: rgb(212, 164, 174);
-	--section-border: rgb(199, 144, 155);
-	--radius-lg: 24px;
-	--radius-md: 16px;
-	--radius-sm: 12px;
-}
-
 * {
 	box-sizing: border-box;
 }
 
-html {
-	scroll-behavior: smooth;
-}
-
 body {
 	margin: 0;
-	font-family: 'Aptos', 'Segoe UI', 'Trebuchet MS', 'Helvetica Neue', Arial, sans-serif;
-	color: var(--text-main);
-	background: var(--page-bg);
+	font-family: 'Segoe UI', 'Trebuchet MS', Arial, sans-serif;
+	color: rgb(28, 18, 20);
+	background: rgb(239, 218, 222);
 }
 
 main {
-	padding: 40px 20px 60px;
+	padding: 25px;
+}
+
+h1 {
+	margin: 0;
+	font-size: 2rem;
+	letter-spacing: -0.05rem;
+	color: rgb(200, 16, 46);
+}
+
+h2 {
+	margin: 0 10px 15px;
+	font-size: 1.2rem;
+	color: rgb(140, 10, 31);
+}
+
+p, label {
+	color: rgb(28, 18, 20);
+	line-height: 1.5;
+	margin: 0 0 7px;
+	font-weight: 500;
 }
 
 .container {
-	max-width: 920px;
+	max-width: 750px;
 	margin: 0 auto;
-	padding: 32px;
-	background: var(--card-bg);
-	border: 1px solid var(--border);
-	border-radius: 32px;
+	padding: 30px;
+	background: rgb(255, 255, 255);
+	border: 1px solid rgb(212, 164, 174);
+	border-radius: 30px;
 }
 
 .survey_title {
-	margin-bottom: 12px;
+	margin-bottom: 20px;
+	text-align: center;
 }
 
-.survey_title h1 {
-	margin: 0;
-	font-size: clamp(2rem, 4vw, 3rem);
-	line-height: 1.05;
-	letter-spacing: -0.04em;
-	color: var(--primary);
-}
 
-.survey_intro {
-	margin-bottom: 22px;
-	padding: 16px 18px;
-	background: var(--primary-faint);
-	border: 1px solid var(--border);
-	border-radius: var(--radius-md);
-}
-
-.survey_intro p {
-	margin: 0;
-	color: var(--text-muted);
-	font-size: 1rem;
-	line-height: 1.65;
-}
-
-.survey_form {
-	display: grid;
-	gap: 18px;
-}
-
+.survey_intro,
 .survey_section {
 	padding: 20px 20px 14px;
-	background: var(--section-bg);
-	border: 1px solid var(--section-border);
-	border-radius: var(--radius-lg);
-}
-
-.survey_section h2 {
-	margin: 0 0 14px;
-	font-size: 1.15rem;
-	color: var(--primary-dark);
-	letter-spacing: -0.02em;
+	background: rgb(248, 228, 232);
+	border: 1px solid rgb(199, 144, 155);
+	border-radius: 20px;
+	margin-bottom: 25px;
 }
 
 .question {
-	margin-bottom: 16px;
-	padding: 16px 16px 12px;
+	margin-bottom: 15px;
+	padding: 15px;
 	background: #ffffff;
-	border: 1px solid var(--border);
-	border-radius: var(--radius-md);
+	border: 1px solid rgb(212, 164, 174);
+	border-radius: 15px;
 }
 
-.question:last-child {
-	margin-bottom: 10px;
-}
-
-.question p,
 .question label {
-	color: var(--text-main);
-	font-size: 0.98rem;
-	line-height: 1.55;
+	font-weight: 400;
 }
 
+.openended_question label,
 .question p {
-	margin: 0 0 10px;
 	font-weight: 500;
+	margin-left: 5px;
 }
 
 .options {
 	display: grid;
-	gap: 8px;
+	gap: 10px;
 }
 
 .options label {
 	display: flex;
 	align-items: center;
 	gap: 10px;
-	padding: 8px 10px;
-	background: var(--primary-faint);
-	border: 1px solid var(--primary-soft);
-	border-radius: var(--radius-sm);
-	transition: background-color 0.2s ease, border-color 0.2s ease;
+	padding: 7px 10px;
+	background: rgb(252, 236, 239);
+	border: 1px solid rgb(229, 183, 192);
+	border-radius: 10px;
 }
 
 .options label:hover {
-	background: rgb(255, 241, 243);
-	border-color: var(--primary-soft);
+	opacity: 80%;
 }
 
 input[type='radio'],
 input[type='checkbox'] {
-	accent-color: var(--primary);
-	width: 16px;
-	height: 16px;
+	width: 10px;
+	height: 10px;
 	margin: 0;
 	flex-shrink: 0;
 }
@@ -146,67 +105,41 @@ input[type='checkbox'] {
 textarea,
 input[type='number'],
 select {
+	resize: none;
 	width: 100%;
-	margin-top: 8px;
-	padding: 14px 16px;
-	border: 1px solid var(--border);
-	border-radius: var(--radius-sm);
-	background: rgb(255, 255, 255);
-	color: var(--text-main);
+	margin-top: 5px;
+	padding: 15px;
+	border: 1px solid rgb(212, 164, 174);
+	border-radius: 5px;
+	color: rgb(28, 18, 20);
 	font: inherit;
-	transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-}
-
-textarea {
-	min-height: 120px;
-	resize: vertical;
 }
 
 textarea:focus,
 input[type='number']:focus,
 select:focus {
-	outline: none;
-	border-color: var(--primary);
-	box-shadow: 0 0 0 4px rgb(244, 221, 226);
-	background: rgb(255, 255, 255);
-}
-
-.purchase_questions {
-	margin-top: 12px;
-	padding-top: 4px;
-}
-
-.form_actions {
-	display: flex;
-	justify-content: flex-end;
-	margin-top: 4px;
+	outline-color: rgb(198, 101, 118);
 }
 
 .submit_button {
+	display: block;
+	margin: 0 auto;
+	width: 200px;
 	border: 0;
-	border-radius: 999px;
-	padding: 14px 24px;
+	border-radius: 1000px;
+	padding: 15px 25px;
 	font: inherit;
-	font-weight: 700;
-	color: rgb(255, 255, 255);
-	background: var(--primary);
+	font-weight: 750;
+	color: rgb(245, 237, 237);
+	background: rgb(200, 16, 46);
 	cursor: pointer;
-	transition: background-color 0.2s ease;
 }
 
 .submit_button:hover {
-	background: rgb(176, 12, 39);
+	opacity: 80%;
 }
 
-.submit_button:active {
-	background: rgb(155, 10, 34);
-}
-
-::placeholder {
-	color: rgb(148, 121, 126);
-}
-
-@media (max-width: 768px) {
+/*@media (max-width: 768px) {
 	main {
 		padding: 22px 14px 36px;
 	}
@@ -235,4 +168,4 @@ select:focus {
 	.submit_button {
 		width: 100%;
 	}
-}
+} */
