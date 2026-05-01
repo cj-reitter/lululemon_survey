@@ -1,6 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
     const surveyForm = document.getElementById('survey_form');
     const purchaseQuestions = document.querySelector('.purchase_questions');
+    let isSubmitting = false;
+
+    function setFormDisabled(disabled) {
+        if (!surveyForm) {
+            return;
+        }
+
+        const controls = surveyForm.querySelectorAll('input, select, textarea, button');
+        controls.forEach(control => {
+            control.disabled = disabled;
+        });
+    }
 
     function togglePurchaseQuestions(show) {
         if (!purchaseQuestions) {
@@ -34,6 +46,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (surveyForm) {
         surveyForm.addEventListener('submit', function(e) {
             e.preventDefault();
+
+            if (isSubmitting) {
+                return;
+            }
+
+            isSubmitting = true;
+            setFormDisabled(true);
 
             const formData = new FormData(surveyForm);
 
@@ -71,12 +90,16 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(result => {
                 if (result.success) {
-                    alert('Thank you for completing the survey! You may now close this page.')
+                    alert('Thank you for completing the survey! You may now close this page.');
                 } else {
+                    isSubmitting = false;
+                    setFormDisabled(false);
                     alert('Error: ' + (result.error || 'There was an error submitting the survey. Please try again.'));
                 }
             })
             .catch(error => {
+                isSubmitting = false;
+                setFormDisabled(false);
                 console.error('Error:', error);
                 alert(error.message || 'There was an error submitting the survey. Please try again.');
             });

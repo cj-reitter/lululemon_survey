@@ -19,8 +19,12 @@ SECURE_HSTS_SECONDS = os.getenv('SECURE_HSTS_SECONDS')
 SECURE_HSTS_INCLUDE_SUBDOMAINS = os.getenv('SECURE_HSTS_INCLUDE_SUBDOMAINS') != 'False'
 SECURE_HSTS_PRELOAD = os.getenv('SECURE_HSTS_PRELOAD') != 'False'
 
-ALLOWED_HOSTS = ['.lu-lululemon-survey', '127.0.0.1']
-CSRF_TRUSTED_ORIGINS = ['https://lu-lululemon-survey.com']
+ALLOWED_HOSTS = ['.lu-lululemon-survey', '127.0.0.1', 'localhost']
+CSRF_TRUSTED_ORIGINS = [
+    'https://lu-lululemon-survey.com',
+    'http://127.0.0.1:8000',
+    'http://localhost:8000',
+]
 
 
 # Application definition
