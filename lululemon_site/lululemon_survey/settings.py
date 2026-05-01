@@ -1,20 +1,26 @@
 from pathlib import Path
+from dotenv import load_dotenv
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ji%(w!d&v1is1*d_--n=z!k$ks&w0ju$(5kt&za(s&ndc3@96i'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+load_dotenv(BASE_DIR / '.env')
 
-ALLOWED_HOSTS = []
+SECRET_KEY = os.getenv('SECRET_KEY')
+
+DEBUG = os.getenv('DEBUG') != 'False'
+CSRF_COOKIE_SECURE = os.getenv('CSRF_COOKIE_SECURE') != 'False'
+SESSION_COOKIE_SECURE = os.getenv('SESSION_COOKIE_SECURE') != 'False'
+SECURE_SSL_REDIRECT = os.getenv('SECURE_SSL_REDIRECT') != 'False'
+SECURE_HSTS_SECONDS = os.getenv('SECURE_HSTS_SECONDS')
+SECURE_HSTS_INCLUDE_SUBDOMAINS = os.getenv('SECURE_HSTS_INCLUDE_SUBDOMAINS') != 'False'
+SECURE_HSTS_PRELOAD = os.getenv('SECURE_HSTS_PRELOAD') != 'False'
+
+ALLOWED_HOSTS = ['.lu-lululemon-survey', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://lu-lululemon-survey.com']
 
 
 # Application definition
@@ -31,6 +37,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -65,7 +72,7 @@ WSGI_APPLICATION = 'lululemon_survey.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'lululemon_survey_results.sqlite3',
     }
 }
 

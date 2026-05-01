@@ -1,0 +1,171 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: 'Segoe UI', 'Trebuchet MS', Arial, sans-serif;
+	color: rgb(28, 18, 20);
+	background: rgb(239, 218, 222);
+}
+
+main {
+	padding: 25px;
+}
+
+h1 {
+	margin: 0;
+	font-size: 2rem;
+	letter-spacing: -0.05rem;
+	color: rgb(200, 16, 46);
+}
+
+h2 {
+	margin: 0 10px 15px;
+	font-size: 1.2rem;
+	color: rgb(140, 10, 31);
+}
+
+p, label {
+	color: rgb(28, 18, 20);
+	line-height: 1.5;
+	margin: 0 0 7px;
+	font-weight: 500;
+}
+
+.container {
+	max-width: 750px;
+	margin: 0 auto;
+	padding: 30px;
+	background: rgb(255, 255, 255);
+	border: 1px solid rgb(212, 164, 174);
+	border-radius: 30px;
+}
+
+.survey_title {
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+
+.survey_intro,
+.survey_section {
+	padding: 20px 20px 14px;
+	background: rgb(248, 228, 232);
+	border: 1px solid rgb(199, 144, 155);
+	border-radius: 20px;
+	margin-bottom: 25px;
+}
+
+.question {
+	margin-bottom: 15px;
+	padding: 15px;
+	background: #ffffff;
+	border: 1px solid rgb(212, 164, 174);
+	border-radius: 15px;
+}
+
+.question label {
+	font-weight: 400;
+}
+
+.openended_question label,
+.question p {
+	font-weight: 500;
+	margin-left: 5px;
+}
+
+.options {
+	display: grid;
+	gap: 10px;
+}
+
+.options label {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 7px 10px;
+	background: rgb(252, 236, 239);
+	border: 1px solid rgb(229, 183, 192);
+	border-radius: 10px;
+}
+
+.options label:hover {
+	opacity: 80%;
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+	width: 10px;
+	height: 10px;
+	margin: 0;
+	flex-shrink: 0;
+}
+
+textarea,
+input[type='number'],
+select {
+	resize: none;
+	width: 100%;
+	margin-top: 5px;
+	padding: 15px;
+	border: 1px solid rgb(212, 164, 174);
+	border-radius: 5px;
+	color: rgb(28, 18, 20);
+	font: inherit;
+}
+
+textarea:focus,
+input[type='number']:focus,
+select:focus {
+	outline-color: rgb(198, 101, 118);
+}
+
+.submit_button {
+	display: block;
+	margin: 0 auto;
+	width: 200px;
+	border: 0;
+	border-radius: 1000px;
+	padding: 15px 25px;
+	font: inherit;
+	font-weight: 750;
+	color: rgb(245, 237, 237);
+	background: rgb(200, 16, 46);
+	cursor: pointer;
+}
+
+.submit_button:hover {
+	opacity: 80%;
+}
+
+/*@media (max-width: 768px) {
+	main {
+		padding: 22px 14px 36px;
+	}
+
+	.container {
+		padding: 18px;
+		border-radius: 24px;
+	}
+
+	.survey_section {
+		padding: 16px 14px 10px;
+	}
+
+	.question {
+		padding: 12px;
+	}
+
+	.options label {
+		align-items: flex-start;
+	}
+
+	.form_actions {
+		justify-content: stretch;
+	}
+
+	.submit_button {
+		width: 100%;
+	}
+} */
