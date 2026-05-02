@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const surveyForm = document.getElementById('survey_form');
     const purchaseQuestions = document.querySelector('.purchase_questions');
     let isSubmitting = false;
+    
 
     function setFormDisabled(disabled) {
         if (!surveyForm) {
@@ -52,9 +53,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             isSubmitting = true;
-            setFormDisabled(true);
-
             const formData = new FormData(surveyForm);
+            setFormDisabled(true);
 
             const data = {};
             for (let [key, value] of formData.entries()) {
